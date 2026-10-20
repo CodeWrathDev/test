@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Our Eternal Love Story ❤️</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffd1dc 50%, #ffb6c1 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --primary-pink: #ff477e;
+            --secondary-pink: #ff758c;
+            --light-pink: #ffe6ec;
+            --text-dark: #3a2e39;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(255, 71, 126, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif, 'Pyidaungsu', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary-pink);
+            opacity: 0.5;
+            animation: floatUp 7s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0.4) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        /* Page Layout Engine */
+        .page {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .page.active-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 1;
+        }
+
+        /* --- PAGE 1: WELCOME DESIGN --- */
+        .welcome-wrapper {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 2px solid var(--white);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: auto;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .welcome-badge {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+        }
+
+        .welcome-wrapper h1 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .welcome-wrapper p {
+            font-size: 1.05rem;
+            color: #665;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Click Me Button with Elegant Pulse */
+        .click-me-btn {
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            color: var(--white);
+            border: none;
+            padding: 16px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 71, 126, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            animation: softPulse 2s infinite;
+        }
+
+        @keyframes softPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 71, 126, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 126, 0); }
+        }
+
+        .click-me-btn:hover {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 15px 30px rgba(255, 71, 126, 0.6);
+        }
+
+        /* --- COMMON HEADER STYLE --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .back-btn {
+            background: var(--white);
+            border: 2px solid var(--secondary-pink);
+            color: var(--primary-pink);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary-pink);
+            margin-bottom: 5px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* --- PAGE 2: ALBUM CATEGORIES --- */
+        .categories-grid {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            border: 2px solid var(--white);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 71, 126, 0.25);
+        }
+
+        .card-img-wrap {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-card:hover .card-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .badge-count {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 5px 14px;
+            font-size: 0.85rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .card-body p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .open-album-link {
+            color: var(--primary-pink);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- ALBUM DETAIL GRID --- */
+        .album-grid {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 270px;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--white);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-caption {
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        /* --- PAGE 4: INTERACTIVE QUIZ (5 QUESTIONS) --- */
+        .quiz-wrapper {
+            max-width: 650px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--white);
+            margin: 0 auto;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active-step {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-step h3 {
+            font-size: 1.3rem;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-opt-btn {
+            background: var(--white);
+            border: 2px solid #ffd1dc;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .quiz-opt-btn:hover {
+            background: var(--light-pink);
+            border-color: var(--primary-pink);
+            transform: translateX(5px);
+        }
+
+        .quiz-feedback {
+            font-style: italic;
+            color: var(--primary-pink);
+            font-weight: 500;
+            min-height: 30px;
+            margin-top: 10px;
+        }
+
+        /* --- LIGHTBOX MODAL WITH ROTATE --- */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-content-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 75vh;
+            border-radius: 15px;
+            border: 4px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+        }
+
+        .rotate-btn {
+            margin-top: 20px;
+            background: var(--primary-pink);
+            color: var(--white);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .rotate-btn:hover {
+            background: #e03b6d;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- PAGE 1: WELCOME PAGE -->
+    <section id="page1" class="page active-page">
+        <div class="welcome-wrapper">
+            <div class="welcome-badge">Our Love Story</div>
+            <h1>ချစ်ရတဲ့ ကိုယ့်ရဲ့ကောင်မလေးအတွက်...</h1>
+            <p>ဒီ Website လေးက ကိုယ်တို့နှစ်ယောက်ရဲ့ လှပတဲ့ အမှတ်တရပုံရိပ်တွေနဲ့ အချစ်ခရီးလမ်းကို အထူးဖန်တီးစုစည်းပေးထားတာပါ။ ရှေ့ဆက်မယ့် ခရီးတွေမှာလည်း အမြဲတမ်း အတူတူရှိနေမယ်နော် ❤️</p>
+            
+            <button class="click-me-btn" onclick="goToPage('page2')">
+                <span>Click me</span>
+                <i class="fa-solid fa-heart"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 2: ALBUM CATEGORIES -->
+    <section id="page2" class="page">
+        <header class="section-header">
+            <button class="back-btn" onclick="goToPage('page1')">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <h2>Sweet Memories Collections</h2>
+            <p>ကြိုက်နှစ်သက်ရာ အမှတ်တရ အယ်လ်ဘမ်တစ်ခုကို ရွေးချယ်ပါ</p>
+        </header>
+
+        <div class="categories-grid">
+            <!-- Category 1 -->
+            <div class="category-card" onclick="openAlbum('First Dates & Coffee', [
+                {url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80', caption: 'ပထမဆုံးတွေ့ဆုံခဲ့တဲ့နေ့ 🌸'},
+                {url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80', caption: 'ကော်ဖီဆိုင်လေးထဲမှာ ☕'},
+                {url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80', caption: 'စကားတွေ အများကြီးပြောဖြစ်ခဲ့ကြတယ် 💕'},
+                {url: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=800&q=80', caption: 'ပြုံးပျော်နေတဲ့ မျက်နှာလေး 😊'},
+                {url: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80', caption: 'အမှတ်တရ လက်တွဲထားစဉ် ✨'}
+            ])">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80" alt="Album 1">
+                    <span class="badge-count"><i class="fa-solid fa-images"></i> 5 Photos</span>
+                </div>
+                <div class="card-body">
+                    <h3>First Dates & Coffee</h3>
+                    <p>ပထမဆုံးတွေ့ဆုံခဲ့တဲ့ အချိန်တွေနဲ့ အတူသောက်ခဲ့ကြတဲ့ ကော်ဖီခွက်လေးများ...</p>
+                    <span class="open-album-link">View Album <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="category-card" onclick="openAlbum('Happy Trips & Adventures', [
+                {url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80', caption: 'ခရီးထွက်ဖို့ အဆင်သင့်ဖြစ်ပြီ ✈️'},
+                {url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', caption: 'ပင်လယ်ကမ်းခြေ အလွမ်းပြေ 🌊'},
+                {url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80', caption: 'တောင်ပေါ်ဒေသ အေးချမ်းမှု 🏔️'},
+                {url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', caption: 'သဘာဝရှုခင်းလှလှလေးတွေ 🌲'},
+                {url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80', caption: 'လမ်းခရီးတစ်လျှောက် ပျော်စရာများ 🚗'}
+            ])">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Album 2">
+                    <span class="badge-count"><i class="fa-solid fa-images"></i> 5 Photos</span>
+                </div>
+                <div class="card-body">
+                    <h3>Happy Trips & Adventures</h3>
+                    <p>အတူတူ ခရီးတွေထွက်ရင်း ပျော်ရွှင်ခဲ့ရတဲ့ အမှတ်တရ နေရာစုံ...</p>
+                    <span class="open-album-link">View Album <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="category-card" onclick="openAlbum('Special Celebrations', [
+                {url: 'https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80', caption: 'Happy Birthday to You 🎂'},
+                {url: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80', caption: 'လက်ဆောင်လေးတွေနဲ့ ပျော်ရွှင်စရာ 🎁'},
+                {url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80', caption: 'ထူးမြတ်တဲ့ အထိမ်းအမှတ်နေ့ 🌟'},
+                {url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80', caption: 'အတူတူ ဖြတ်သန်းရတဲ့ အချိန်များ ❤️'},
+                {url: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80', caption: 'အမြဲတမ်း ပျော်ရွှင်နေပါစေ 🥳'}
+            ])">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Album 3">
+                    <span class="badge-count"><i class="fa-solid fa-images"></i> 5 Photos</span>
+                </div>
+                <div class="card-body">
+                    <h3>Special Celebrations</h3>
+                    <p>မွေးနေ့ပွဲတွေနဲ့ အထူးအထိမ်းအမှတ်နေ့တွေမှာ အတူဆင်နွှဲခဲ့ကြပုံများ...</p>
+                    <span class="open-album-link">View Album <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+
+            <!-- NEW ADDED ALBUM CATEGORY -->
+            <div class="category-card" onclick="openAlbum('Our Sweetest Moments', [
+                {url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80', caption: 'ရယ်မောပျော်ရွှင်နေချိန်လေးများ 😊'},
+                {url: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80', caption: 'အမှတ်တရ ဓာတ်ပုံလေးများ 📸'},
+                {url: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=80', caption: 'လျှောက်လည်ခဲ့ကြတဲ့ နေရာလေးများ 🍃'},
+                {url: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=800&q=80', caption: 'လက်တွဲခရီး ဆက်စို့ 💖'},
+                {url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80', caption: 'ထာဝရ အတူတူရှိမယ် ✨'}
+            ])">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Album 4">
+                    <span class="badge-count"><i class="fa-solid fa-images"></i> 5 Photos</span>
+                </div>
+                <div class="card-body">
+                    <h3>Our Sweetest Moments</h3>
+                    <p>အချိုမြိန်ဆုံးနဲ့ အပျော်ရဆုံး အမှတ်တရပုံရိပ် အသစ်လေးများ...</p>
+                    <span class="open-album-link">View Album <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button to go to Quiz Page -->
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="click-me-btn" onclick="goToPage('page4')">
+                <span>Take Our Love Quiz</span>
+                <i class="fa-solid fa-gift"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- PAGE 3: ALBUM DETAIL (5 PHOTOS) -->
+    <section id="page3" class="page">
+        <header class="section-header">
+            <button class="back-btn" onclick="goToPage('page2')">
+                <i class="fa-solid fa-arrow-left"></i> Back to Albums
+            </button>
+            <h2 id="albumTitleText">Album Title</h2>
+            <p>ပုံတစ်ပုံချင်းစီကို နှိပ်၍ ကြီးမားစွာ ကြည့်ရှုနိုင်ပြီး Rotate ခလုတ်ဖြင့် လှည့်ကြည့်နိုင်ပါသည်</p>
+        </header>
+
+        <main class="album-grid" id="albumGridContainer">
+            <!-- JavaScript မှတစ်ဆင့် ပုံများ အလိုအလျောက် ဝင်လာမည် -->
+        </main>
+    </section>
+
+    <!-- PAGE 4: 5 QUESTIONS LOVE QUIZ -->
+    <section id="page4" class="page">
+        <header class="section-header">
+            <button class="back-btn" onclick="goToPage('page2')">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <h2>Our Love Quiz ❤️</h2>
+            <p>ကိုယ့်အကြောင်း ဘယ်လောက်သိလဲ စမ်းကြည့်ရအောင်</p>
+        </header>
+
+        <div class="quiz-wrapper">
+            <!-- Question 1 -->
+            <div class="quiz-step active-step" id="q1">
+                <h3>မေးခွန်း ၁။ မောင်မောင်နဲ့ မမ ရဲ့ First Date ကဘယ်နေရာလဲ</h3>
+                <div class="quiz-options">
+                    <button class="quiz-opt-btn" onclick="answerQuiz(1, false)">ကန်တင်းမာလား</button>
+                    <button class="quiz-opt-btn" onclick="answerQuiz(1, true)">ဘောလုံးကွင်းမာလား</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(1, 'မမကလေးသေချာပြန်ဖြေဦးသဲလေး')">အဒေါ်ကြီးထမင်းဆိုင်မာလား</button>
+                </div>
+                <div class="quiz-feedback" id="fb1"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-step" id="q2">
+                <h3>မေးခွန်း ၂။ မောင်မောင်နဲ့ မမလေးရဲ့ နှစ်ပတ်လည်(Anniversary)နေ့ကဘယ်နေ့လဲ</h3>
+                <div class="quiz-options">
+                    <button class="quiz-opt-btn" onclick="answerQuiz(2, true)">1.1.2026</button>
+                    <button class="quiz-opt-btn" onclick="answerQuiz(2, false)">6.8.2026</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(2, 'မှားနေတယ်လေ မမကလေး')">8.1.2026</button>
+                </div>
+                <div class="quiz-feedback" id="fb2"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-step" id="q3">
+                <h3>မေးခွန်း ၃။ မောင်မောင်နဲ့ မမနဲ့ အသွားချင်ဆုံး ခရီး လေးက ဘာလဲ</h3>
+                <div class="quiz-options">
+                    <button class="quiz-opt-btn" onclick="quizFeedback(3, 'အ့တာ မမသူငယ်ချင်းတေနဲ့သွားမယ့်နေရာလေ')">ကလော</button>
+                    <button class="quiz-opt-btn" onclick="answerQuiz(3, true)">ကမ်းခြေ🌊</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(3, 'သေချာရွေး အသဲလေး မောင်တို့ သွားချင်ဆုံးနေရာလေ')">ပွဲဈေး</button>
+                </div>
+                <div class="quiz-feedback" id="fb3"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-step" id="q4">
+                <h3>မေးခွန်း ၄။ ကိုယ်က ကောင်မလေးကို ဘယ်လို ခေါ်ရတာ အကြိုက်ဆုံးလဲ?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-opt-btn" onclick="answerQuiz(4, true)">ချစ်ရတဲ့ ကိုယ့်ရဲ့ကောင်မလေး 🥰</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(4, 'အဲ့ဒီလို ဘယ်ခေါ်ဖူးလို့လဲဟင်! 🤭')">နာမည်အတိုကောက်</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(4, 'နာမည်ပြောင်နဲ့ လုံးဝမခေါ်ဘူးနော်! 🙃')">နာမည်ပြောင်လေး</button>
+                </div>
+                <div class="quiz-feedback" id="fb4"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-step" id="q5">
+                <h3>မေးခွန်း ၅။ ရှေ့လျှောက် ဘယ်လောက်ထိ အတူတူ တွဲသွားကြမှာလဲ?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-opt-btn" onclick="quizFeedback(5, 'နည်းနည်းလေးပဲလား၊ မဖြစ်နိုင်ဘူးလေ! 😤')">တစ်နှစ် နှစ်နှစ်လောက်</button>
+                    <button class="quiz-opt-btn" onclick="answerQuiz(5, true)">ဘဝအဆုံးထိ ထာဝရ အတူတူပါပဲ 💕</button>
+                    <button class="quiz-opt-btn" onclick="quizFeedback(5, 'စဉ်းစားစရာကို မလိုတာပါကွာ! 🥰')">မသေချာသေးဘူး</button>
+                </div>
+                <div class="quiz-feedback" id="fb5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL WITH ROTATE -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content-wrap">
+            <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed View">
+            <button class="rotate-btn" onclick="rotatePhoto()"><i class="fa-solid fa-rotate-right"></i> Rotate Photo</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentRotation = 0;
+
+        // Page Navigation
+        function goToPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+            setTimeout(() => {
+                document.getElementById(pageId).classList.add('active-page');
+                window.scrollTo(0, 0);
+            }, 300);
+        }
+
+        // Open Album with Photos
+        function openAlbum(title, photosArray) {
+            document.getElementById('albumTitleText').innerText = title;
+            const container = document.getElementById('albumGridContainer');
+            container.innerHTML = '';
+
+            photosArray.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('photo-card');
+                card.innerHTML = `
+                    <img src="${item.url}" alt="${item.caption}">
+                    <div class="photo-caption">${item.caption}</div>
+                `;
+                card.onclick = () => openLightbox(item.url);
+                container.appendChild(card);
+            });
+
+            goToPage('page3');
+        }
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            currentRotation = 0;
+            const imgEl = document.getElementById('lightboxImg');
+            imgEl.src = src;
+            imgEl.style.transform = `rotate(${currentRotation}deg)`;
+            document.getElementById('lightboxModal').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        // Rotate Photo Function
+        function rotatePhoto() {
+            currentRotation = (currentRotation + 90) % 360;
+            const imgEl = document.getElementById('lightboxImg');
+            imgEl.style.transform = `rotate(${currentRotation}deg)`;
+        }
+
+        // Quiz Logic
+        function quizFeedback(qNum, text) {
+            document.getElementById('fb' + qNum).innerText = text;
+        }
+
+        function answerQuiz(qNum, isCorrect) {
+            const fb = document.getElementById('fb' + qNum);
+            if(isCorrect) {
+                fb.innerText = "မှန်ပါတယ် မမကလေးရေ,နောက်မေးခွန်းတွေဆက်ဖြေမယ်နော်❤️";
+                setTimeout(() => {
+                    let nextQ = qNum + 1;
+                    if(document.getElementById('q' + nextQ)) {
+                        document.getElementById('q' + qNum).classList.remove('active-step');
+                        document.getElementById('q' + nextQ).classList.add('active-step');
+                    } else {
+                        alert("ဂုဏ်ယူပါတယ်မမကလေးရေ🎉 ၊ မေးခွန်းတွေကိုမှန်မှန်ကန်ကန်ဖြေပြီးပြီဆိုတော့ မောင့်ရဲ့အချစ်တွေကို မမကလေး အပိုင်ရရှိသွားပါပြီ😘 အစတည်းကပိုင်ပြီးသားပါနော့");
+                        goToPage('page2');
+                    }
+                }, 1500);
+            } else {
+                fb.innerText = "မမကလေးသေချာစဉ်းစားဦး";
+            }
+        }
+
+        // Floating Hearts Generator
+        function createHeart() {
+            const container = document.getElementById('heartsContainer');
+            if(!container) return;
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const symbols = ['❤️', '💖', '💗', '💓', '💕'];
+            heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 18 + 14) + 'px';
+            const duration = Math.random() * 4 + 5;
+            heart.style.animationDuration = duration + 's';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), duration * 1000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
